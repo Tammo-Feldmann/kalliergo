@@ -1,7 +1,8 @@
 ---
-title: Vote For Pedro
+title: Vote For Pedo
 ---
-# Welcome to the blog.
+
+# Welcome to the bog.
 
 > To edit this site head over to the [`/admin`](/admin) route. Then click the pencil icon in the bottom lefthand corner to start editing 🦙. 
 

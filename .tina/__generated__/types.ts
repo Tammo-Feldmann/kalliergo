@@ -67,8 +67,8 @@ export type Query = {
   getDocument: DocumentNode;
   getDocumentList: DocumentConnection;
   getDocumentFields: Scalars['JSON'];
-  getPostsDocument: PostsDocument;
-  getPostsList: PostsConnection;
+  getPostDocument: PostDocument;
+  getPostList: PostConnection;
 };
 
 
@@ -96,12 +96,12 @@ export type QueryGetDocumentListArgs = {
 };
 
 
-export type QueryGetPostsDocumentArgs = {
+export type QueryGetPostDocumentArgs = {
   relativePath?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryGetPostsListArgs = {
+export type QueryGetPostListArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Float']>;
@@ -142,35 +142,51 @@ export type CollectionDocumentsArgs = {
   last?: InputMaybe<Scalars['Float']>;
 };
 
-export type DocumentNode = PostsDocument;
+export type DocumentNode = PostDocument;
 
-export type Posts = {
-  __typename?: 'Posts';
+export type PostAuthor = {
+  __typename?: 'PostAuthor';
+  name?: Maybe<Scalars['String']>;
+  picture?: Maybe<Scalars['String']>;
+};
+
+export type PostOgImage = {
+  __typename?: 'PostOgImage';
+  url?: Maybe<Scalars['String']>;
+};
+
+export type Post = {
+  __typename?: 'Post';
   title?: Maybe<Scalars['String']>;
+  excerpt?: Maybe<Scalars['String']>;
+  coverImage?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+  author?: Maybe<PostAuthor>;
+  ogImage?: Maybe<PostOgImage>;
   body?: Maybe<Scalars['String']>;
 };
 
-export type PostsDocument = Node & Document & {
-  __typename?: 'PostsDocument';
+export type PostDocument = Node & Document & {
+  __typename?: 'PostDocument';
   id: Scalars['ID'];
   sys: SystemInfo;
-  data: Posts;
+  data: Post;
   form: Scalars['JSON'];
   values: Scalars['JSON'];
   dataJSON: Scalars['JSON'];
 };
 
-export type PostsConnectionEdges = {
-  __typename?: 'PostsConnectionEdges';
+export type PostConnectionEdges = {
+  __typename?: 'PostConnectionEdges';
   cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<PostsDocument>;
+  node?: Maybe<PostDocument>;
 };
 
-export type PostsConnection = Connection & {
-  __typename?: 'PostsConnection';
+export type PostConnection = Connection & {
+  __typename?: 'PostConnection';
   pageInfo?: Maybe<PageInfo>;
   totalCount: Scalars['Float'];
-  edges?: Maybe<Array<Maybe<PostsConnectionEdges>>>;
+  edges?: Maybe<Array<Maybe<PostConnectionEdges>>>;
 };
 
 export type Mutation = {
@@ -178,8 +194,8 @@ export type Mutation = {
   addPendingDocument: DocumentNode;
   updateDocument: DocumentNode;
   createDocument: DocumentNode;
-  updatePostsDocument: PostsDocument;
-  createPostsDocument: PostsDocument;
+  updatePostDocument: PostDocument;
+  createPostDocument: PostDocument;
 };
 
 
@@ -204,49 +220,75 @@ export type MutationCreateDocumentArgs = {
 };
 
 
-export type MutationUpdatePostsDocumentArgs = {
+export type MutationUpdatePostDocumentArgs = {
   relativePath: Scalars['String'];
-  params: PostsMutation;
+  params: PostMutation;
 };
 
 
-export type MutationCreatePostsDocumentArgs = {
+export type MutationCreatePostDocumentArgs = {
   relativePath: Scalars['String'];
-  params: PostsMutation;
+  params: PostMutation;
 };
 
 export type DocumentMutation = {
-  posts?: InputMaybe<PostsMutation>;
+  post?: InputMaybe<PostMutation>;
 };
 
-export type PostsMutation = {
+export type PostAuthorMutation = {
+  name?: InputMaybe<Scalars['String']>;
+  picture?: InputMaybe<Scalars['String']>;
+};
+
+export type PostOgImageMutation = {
+  url?: InputMaybe<Scalars['String']>;
+};
+
+export type PostMutation = {
   title?: InputMaybe<Scalars['String']>;
+  excerpt?: InputMaybe<Scalars['String']>;
+  coverImage?: InputMaybe<Scalars['String']>;
+  date?: InputMaybe<Scalars['String']>;
+  author?: InputMaybe<PostAuthorMutation>;
+  ogImage?: InputMaybe<PostOgImageMutation>;
   body?: InputMaybe<Scalars['String']>;
 };
 
-export type PostsPartsFragment = { __typename?: 'Posts', title?: string | null | undefined, body?: string | null | undefined };
+export type PostPartsFragment = { __typename?: 'Post', title?: string | null | undefined, excerpt?: string | null | undefined, coverImage?: string | null | undefined, date?: string | null | undefined, body?: string | null | undefined, author?: { __typename: 'PostAuthor', name?: string | null | undefined, picture?: string | null | undefined } | null | undefined, ogImage?: { __typename: 'PostOgImage', url?: string | null | undefined } | null | undefined };
 
-export type GetPostsDocumentQueryVariables = Exact<{
+export type GetPostDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
 }>;
 
 
-export type GetPostsDocumentQuery = { __typename?: 'Query', getPostsDocument: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Posts', title?: string | null | undefined, body?: string | null | undefined } } };
+export type GetPostDocumentQuery = { __typename?: 'Query', getPostDocument: { __typename?: 'PostDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Post', title?: string | null | undefined, excerpt?: string | null | undefined, coverImage?: string | null | undefined, date?: string | null | undefined, body?: string | null | undefined, author?: { __typename: 'PostAuthor', name?: string | null | undefined, picture?: string | null | undefined } | null | undefined, ogImage?: { __typename: 'PostOgImage', url?: string | null | undefined } | null | undefined } } };
 
-export type GetPostsListQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetPostListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPostsListQuery = { __typename?: 'Query', getPostsList: { __typename?: 'PostsConnection', totalCount: number, edges?: Array<{ __typename?: 'PostsConnectionEdges', node?: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Posts', title?: string | null | undefined, body?: string | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
+export type GetPostListQuery = { __typename?: 'Query', getPostList: { __typename?: 'PostConnection', totalCount: number, edges?: Array<{ __typename?: 'PostConnectionEdges', node?: { __typename?: 'PostDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'Post', title?: string | null | undefined, excerpt?: string | null | undefined, coverImage?: string | null | undefined, date?: string | null | undefined, body?: string | null | undefined, author?: { __typename: 'PostAuthor', name?: string | null | undefined, picture?: string | null | undefined } | null | undefined, ogImage?: { __typename: 'PostOgImage', url?: string | null | undefined } | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
-export const PostsPartsFragmentDoc = gql`
-    fragment PostsParts on Posts {
+export const PostPartsFragmentDoc = gql`
+    fragment PostParts on Post {
   title
+  excerpt
+  coverImage
+  date
+  author {
+    __typename
+    name
+    picture
+  }
+  ogImage {
+    __typename
+    url
+  }
   body
 }
     `;
-export const GetPostsDocumentDocument = gql`
-    query getPostsDocument($relativePath: String!) {
-  getPostsDocument(relativePath: $relativePath) {
+export const GetPostDocumentDocument = gql`
+    query getPostDocument($relativePath: String!) {
+  getPostDocument(relativePath: $relativePath) {
     sys {
       filename
       basename
@@ -257,14 +299,14 @@ export const GetPostsDocumentDocument = gql`
     }
     id
     data {
-      ...PostsParts
+      ...PostParts
     }
   }
 }
-    ${PostsPartsFragmentDoc}`;
-export const GetPostsListDocument = gql`
-    query getPostsList {
-  getPostsList {
+    ${PostPartsFragmentDoc}`;
+export const GetPostListDocument = gql`
+    query getPostList {
+  getPostList {
     totalCount
     edges {
       node {
@@ -278,21 +320,21 @@ export const GetPostsListDocument = gql`
           extension
         }
         data {
-          ...PostsParts
+          ...PostParts
         }
       }
     }
   }
 }
-    ${PostsPartsFragmentDoc}`;
+    ${PostPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      getPostsDocument(variables: GetPostsDocumentQueryVariables, options?: C): Promise<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}> {
-        return requester<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}, GetPostsDocumentQueryVariables>(GetPostsDocumentDocument, variables, options);
+      getPostDocument(variables: GetPostDocumentQueryVariables, options?: C): Promise<{data: GetPostDocumentQuery, variables: GetPostDocumentQueryVariables, query: string}> {
+        return requester<{data: GetPostDocumentQuery, variables: GetPostDocumentQueryVariables, query: string}, GetPostDocumentQueryVariables>(GetPostDocumentDocument, variables, options);
       },
-    getPostsList(variables?: GetPostsListQueryVariables, options?: C): Promise<{data: GetPostsListQuery, variables: GetPostsListQueryVariables, query: string}> {
-        return requester<{data: GetPostsListQuery, variables: GetPostsListQueryVariables, query: string}, GetPostsListQueryVariables>(GetPostsListDocument, variables, options);
+    getPostList(variables?: GetPostListQueryVariables, options?: C): Promise<{data: GetPostListQuery, variables: GetPostListQueryVariables, query: string}> {
+        return requester<{data: GetPostListQuery, variables: GetPostListQueryVariables, query: string}, GetPostListQueryVariables>(GetPostListDocument, variables, options);
       }
     };
   }

@@ -677,7 +677,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "getPostsDocument"
+            "value": "getPostDocument"
           },
           "arguments": [
             {
@@ -701,7 +701,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "PostsDocument"
+                "value": "PostDocument"
               }
             }
           }
@@ -710,7 +710,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "getPostsList"
+            "value": "getPostList"
           },
           "arguments": [
             {
@@ -776,7 +776,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "PostsConnection"
+                "value": "PostConnection"
               }
             }
           }
@@ -1127,7 +1127,7 @@
           "kind": "NamedType",
           "name": {
             "kind": "Name",
-            "value": "PostsDocument"
+            "value": "PostDocument"
           }
         }
       ]
@@ -1138,7 +1138,74 @@
       "directives": [],
       "name": {
         "kind": "Name",
-        "value": "Posts"
+        "value": "PostAuthor"
+      },
+      "fields": [
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "name"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "picture"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "ObjectTypeDefinition",
+      "interfaces": [],
+      "directives": [],
+      "name": {
+        "kind": "Name",
+        "value": "PostOgImage"
+      },
+      "fields": [
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "url"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "ObjectTypeDefinition",
+      "interfaces": [],
+      "directives": [],
+      "name": {
+        "kind": "Name",
+        "value": "Post"
       },
       "fields": [
         {
@@ -1153,6 +1220,81 @@
             "name": {
               "kind": "Name",
               "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "excerpt"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "coverImage"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "date"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "author"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "PostAuthor"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "ogImage"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "PostOgImage"
             }
           }
         },
@@ -1194,7 +1336,7 @@
       "directives": [],
       "name": {
         "kind": "Name",
-        "value": "PostsDocument"
+        "value": "PostDocument"
       },
       "fields": [
         {
@@ -1246,7 +1388,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "Posts"
+                "value": "Post"
               }
             }
           }
@@ -1313,7 +1455,7 @@
       "directives": [],
       "name": {
         "kind": "Name",
-        "value": "PostsConnectionEdges"
+        "value": "PostConnectionEdges"
       },
       "fields": [
         {
@@ -1342,7 +1484,7 @@
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "PostsDocument"
+              "value": "PostDocument"
             }
           }
         }
@@ -1362,7 +1504,7 @@
       "directives": [],
       "name": {
         "kind": "Name",
-        "value": "PostsConnection"
+        "value": "PostConnection"
       },
       "fields": [
         {
@@ -1411,7 +1553,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "PostsConnectionEdges"
+                "value": "PostConnectionEdges"
               }
             }
           }
@@ -1632,7 +1774,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "updatePostsDocument"
+            "value": "updatePostDocument"
           },
           "arguments": [
             {
@@ -1664,7 +1806,7 @@
                   "kind": "NamedType",
                   "name": {
                     "kind": "Name",
-                    "value": "PostsMutation"
+                    "value": "PostMutation"
                   }
                 }
               }
@@ -1676,7 +1818,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "PostsDocument"
+                "value": "PostDocument"
               }
             }
           }
@@ -1685,7 +1827,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "createPostsDocument"
+            "value": "createPostDocument"
           },
           "arguments": [
             {
@@ -1717,7 +1859,7 @@
                   "kind": "NamedType",
                   "name": {
                     "kind": "Name",
-                    "value": "PostsMutation"
+                    "value": "PostMutation"
                   }
                 }
               }
@@ -1729,7 +1871,7 @@
               "kind": "NamedType",
               "name": {
                 "kind": "Name",
-                "value": "PostsDocument"
+                "value": "PostDocument"
               }
             }
           }
@@ -1747,13 +1889,13 @@
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "posts"
+            "value": "post"
           },
           "type": {
             "kind": "NamedType",
             "name": {
               "kind": "Name",
-              "value": "PostsMutation"
+              "value": "PostMutation"
             }
           }
         }
@@ -1763,7 +1905,67 @@
       "kind": "InputObjectTypeDefinition",
       "name": {
         "kind": "Name",
-        "value": "PostsMutation"
+        "value": "PostAuthorMutation"
+      },
+      "fields": [
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "name"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "picture"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "InputObjectTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "PostOgImageMutation"
+      },
+      "fields": [
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "url"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "InputObjectTypeDefinition",
+      "name": {
+        "kind": "Name",
+        "value": "PostMutation"
       },
       "fields": [
         {
@@ -1777,6 +1979,76 @@
             "name": {
               "kind": "Name",
               "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "excerpt"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "coverImage"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "date"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "author"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "PostAuthorMutation"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "ogImage"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "PostOgImageMutation"
             }
           }
         },

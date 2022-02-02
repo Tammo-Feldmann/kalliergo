@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic'
-import { TinaEditProvider } from 'tinacms/dist/edit-state'
-const TinaCMS = dynamic(() => import('tinacms'), { ssr: false })
-import '../styles/index.css'
+import dynamic from "next/dynamic";
+import { TinaEditProvider } from "tinacms/dist/edit-state";
+const TinaCMS = dynamic(() => import("tinacms"), { ssr: false });
+import "../styles/index.css";
 
 const branch = process.env.NEXT_PUBLIC_EDIT_BRANCH || "main";
 const apiURL =
@@ -16,16 +16,21 @@ const App = ({ Component, pageProps }) => {
         editMode={
           <TinaCMS
             apiURL={apiURL}
+            cmsCallback={cms => {
+              import("react-tinacms-editor").then(field => {
+                cms.plugins.add(field.MarkdownFieldPlugin);
+              });
+            }}
             {...pageProps}
           >
-            {(livePageProps) => <Component {...livePageProps} />}
+            {livePageProps => <Component {...livePageProps} />}
           </TinaCMS>
         }
       >
         <Component {...pageProps} />
       </TinaEditProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
